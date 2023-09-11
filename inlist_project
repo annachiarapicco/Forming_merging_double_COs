@@ -1,0 +1,87 @@
+! inlist to evolve a 15 solar mass star
+
+! For the sake of future readers of this file (yourself included),
+! ONLY include the controls you are actually using.  DO NOT include
+! all of the other controls that simply have their default values.
+
+&star_job
+    
+
+  ! display on-screen plots
+    pgstar_flag = .false.
+
+    set_uniform_initial_composition = .true.
+    initial_h1 = 0.70d0
+    initial_h2 = 0d0
+    initial_he3 = 0d0
+    initial_he4 = 0.28d0
+
+    !! 1/5 solar
+    !relax_initial_Z = .true.
+    !new_Z = 0.00284
+    !relax_initial_Y = .true.
+    !new_Y = 0.99716d0
+
+    !! 1/2 solar 
+    !relax_initial_Z = .true.
+    !new_Z = 0.0071
+    !relax_initial_Y = .true.
+    !new_Y = 0.9929d0
+
+    ! solar 
+    relax_initial_Z = .true.
+    new_Z = 0.0142
+    relax_initial_Y = .true.
+    new_Y = 0.9858d0
+
+/ !end of star_job namelist
+
+&kap
+  ! Provided in run_star_extras.f90
+  Zbase=0.02d0 
+  kappa_file_prefix = 'a09'
+
+/
+
+&controls
+
+     scale_max_correction = 0.1d0
+     ignore_species_in_max_correction = .true.
+
+     dxdt_nuc_factor = 0d0
+
+     max_age = 9e7
+     max_model_number = 10000
+     max_years_for_timestep = 5d4
+
+  ! starting specifications
+    initial_mass = 0.225 ! in Msun units
+    log_directory = 'models/Zsun/00_225'
+
+    history_interval = 100000
+    profile_interval = 100000
+    max_num_profile_models = 1
+
+  ! options for energy conservation (see MESA V, Section 3)
+     use_dedt_form_of_energy_eqn = .true.
+     use_gold_tolerances = .true.
+
+  ! stop when the center mass fraction of h1 drops below this limit
+    xa_central_lower_limit_species(1) = 'he4'
+    xa_central_lower_limit(1) = 1d-3
+
+   ! convection controls
+   use_ledoux_criterion = .true.
+   mixing_length_alpha = 2d0
+   alpha_semiconvection = 1d0
+   thermohaline_coeff = 0d0
+   num_cells_for_smooth_gradL_composition_term = 0
+
+   mesh_delta_coeff = 0.7d0
+   ! From 32.75 above
+  !  scale_max_correction = 1d-2
+  !  convergence_ignore_equL_residuals=.true.
+
+   report_solver_progress = .true.
+
+/ ! end of controls namelist
