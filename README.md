@@ -52,3 +52,11 @@ By now I am providing the following:
       3. `m2iso_PmergeMIN`
 
       These are following the same notation as seen above, and they are mapping an iso-contour of probability $P_{\mathrm{merge}}$ of merging within 13.8 Gyr such that $P_{\mathrm{merge}}=0.1$ (the "dashed black line" in Fig. 8, for example). This is derived in the fully isotropic re-emission limit, $\beta=1$.
+
+
+
+_COMING SOON_: 
+1. Boundaries for $\epsilon>0$ with $\epsilon=1+\beta$ and $\beta = 0.,0.5,1.$ . See Sec. 3.5 of the paper, in which I discuss the effect of including some conservativeness.
+2. Overview txt files with the $\zeta_{\mathrm{ad}}$ and $q_{\mathrm{crit}}$ in the conservative approximation, as read by Ge et al. (2020) tables directly.
+3. Grids for NS progenitors kicks, so that the user can compute the iso-contours of fixed $P_{\mathrm{merge}}$ probabilities.
+4. Plotting / visualization scripts used in the paper.
