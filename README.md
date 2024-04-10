@@ -8,8 +8,8 @@ By now I am providing the following:
    
 3. **BOUNDARIES folder**
    
-    This contains my semi-analytical calculations for the instability boundary (Sec. 2.3) and merging time boundary (Sec. 2.1), based on the mass-radius exponents grid provided by Ge et al. (2020) for donor star's initial masses $2 M_{\odot} ≤ m_{\mathrm{d,i}} ≤ 100 M_{\odot}$. The subfolders are named by the donor star's initial mass value, and inside the subfolders you will find txt files called in this fashion: `Info_{M}Msun_upsi{upsilon}.txt`, where `M` is the donor star's mass, and upsilon is the efficiency $\upsilon$ of L2 outflow as defined in Sec. 2.6. The upsilon value in the name of the files just mean that some (not all!) information inside the file is related to the relevant upsilon. Normally, there should be four possible values of upsilon: $\upsilon=1.0,0.75,0.5,0.25$. The file has many columns, some of which are just for visualization purposes. The important ones are:
-   - **_INSTABILITY BOUNDARY_**, $\beta=1$
+    This contains my semi-analytical calculations for the instability boundary (Sec. 2.3) and merging time boundary (Sec. 2.1), based on the mass-radius exponents grid provided by Ge et al. (2020) for donor star's initial masses $2 M_{\odot} ≤ m_{\mathrm{d,i}} ≤ 100 M_{\odot}$. The subfolders are named by the donor star's initial mass value, and inside the subfolders you will find txt files called in this fashion: `Info_{M}Msun_upsi{upsilon}.txt`, where `M` is the donor star's mass, and upsilon is the efficiency $\upsilon$ of L2 outflow as defined in Sec. 2.6. The upsilon value in the name of the files just mean that some (not all!) information inside the file is related to the relevant upsilon. Normally, there should be four possible values of upsilon: $\upsilon=1.0,0.75,0.5,0.25$. Should you need a particular value, drop me a message 🌝 The file has many columns, some of which are just for visualization purposes. The important ones are:
+   - 🔴 **_INSTABILITY BOUNDARY_**, $\beta=1$
      
      This is the "red solid" line you see in Fig. 5 of the paper, for example. It represents the instability (or common envelope, CE) boundary derived in the fully isotropic re-emission ($\beta=1$, if you look into Eq.4 or Eq. 19) limit. For this boundary, you have:
       1. `logP0_crit`: initial period, in $\log P_{\mathrm{i}}$ (days), at which the unstable MT episode is initiated.
@@ -17,14 +17,14 @@ By now I am providing the following:
       3. `phases_crit`: index, along the arrays of `logP0_crit` and `m1iso_crit`, at which TAMS, core He ignition and core He depletion are found. These are directly derived from Get et al. (2020) simulations, as they provide the central abundances in their grid.
       4. `m2iso_crit`: mass of the donor star at the end of the MT episode; calculated with a stripping factor derived from Ge et al. (2020) in the way described in Sec. 2.4, more specifically Eq. 17.
    
-   - **_TIME DELAY BOUNDARY_**, $\beta=1$
+   - 🔵 **_TIME DELAY BOUNDARY_**, $\beta=1$
      
      This is the "indigo solid" line you see in Fig. 5 of the paper, for example. It represents the boundary for systems that have post-MT properties leading to a GW merger, i.e. with time delay $t_{\mathrm{merge}}< 13.8$ Gyr. The shrinkage of the orbit is calculated in the isotropic re-emission ($\beta=1$) limit, Eq. 8. For this boundary, you have:
       1. `logP0_hub`: initial period, in $\log P_{\mathrm{i}}$ (days), to which the maximum accretor mass `m1iso_hub` for GW mergers after the MT episode is corresponding.
       2. `m1iso_hub`: maximum initial (and final) mass of the accretor at which you find GW mergers after the MT episode.
       3. `phases_hub`: index, along the arrays of `logP0_hub` and `m1iso_hub`, at which TAMS, core He ignition and core He depletion are found. These are calculated by comparing the phases_crit with equi-Roche-Lobe loci in the $\log P_{\mathrm{i}} -m_{\mathrm{a,i}}$ diagram.
    
-   - **_ROCHE LOBE BOUNDARY_** $\beta=1$
+   - ⚪️ **_ROCHE LOBE BOUNDARY_** $\beta=1$
      
      This is the "solid gray" line you see in Fig. 5 of the paper, for example. It represents the boundary that we imposed to have sensible orbital separations, at the end of the MT episode, such that the post-MT donor star would still fit into its own Roche Lobe, see Sec. 2.5. For this boundary, you have:
       1. `logP0_RHeRL`: initial period, in $\log P_{\mathrm{i}}$ (days), to which the maximum accretor mass `m1iso_RHeRL` for the orbit to fit a Zero Age Main Sequence Helium star after the MT episode is corresponding.
@@ -38,9 +38,9 @@ By now I am providing the following:
    - **_THE upsilon>0 BOUNDARIES_**
      
      These are the instability ("dashed red" line of Fig. 5), time delay ("dashed blue" line in Fig. 5) and Roche Lobe ("dashed gray" line in Fig. 5) boundaries in the case in which the MT has some L2 outflow efficiency upsilon equal to the value printed in the name of the file. The MT episode is still assumed to be completely non-conservative, by setting $\beta+\upsilon=1$, see Eq. 19 and paragraph 2.6. The names of the relevant columns follow exactly the same notation as the ones described above:
-      1. Instability boundary: (`logP0_critL2_DEF`, `m1iso_critL2_DEF`)
-      2. Time delay boundary: (`logP0_hubL2_DEF`, `m1iso_hubL2_DEF`)
-      3. Roche Lobe boundary: (`logP0_RHeRLL2_DEF`, `m1iso_RHeRLL2_DEF`)
+      1. 🔴 Instability boundary: (`logP0_critL2_DEF`, `m1iso_critL2_DEF`)
+      2. 🔵 Time delay boundary: (`logP0_hubL2_DEF`, `m1iso_hubL2_DEF`)
+      3. ⚪️ Roche Lobe boundary: (`logP0_RHeRLL2_DEF`, `m1iso_RHeRLL2_DEF`)
          
      **NB**: You might notice that there are some columns that are called like the ones listed here above, but without the `"_DEF"` in the end. These are not used in the paper and concern a different fitting function to the L2 position, rather than the "definitive" (hence, DEF) one, in Eq. 20. Just stick to these.
 
