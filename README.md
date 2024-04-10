@@ -35,7 +35,7 @@ By now I am providing the following:
      
      Just for completeness, you find the columns of `logL_Lsun` and `logTeff` at which the models in the Ge et al. (2020) grid are starting their adiabatic mass loss episode.
 
-   - **_THE $\upsilon >0$ BOUNDARIES_**
+   - **_THE upsilon>0 BOUNDARIES_**
      
      These are the instability ("dashed red" line of Fig. 5), time delay ("dashed blue" line in Fig. 5) and Roche Lobe ("dashed gray" line in Fig. 5) boundaries in the case in which the MT has some L2 outflow efficiency upsilon equal to the value printed in the name of the file. The MT episode is still assumed to be completely non-conservative, by setting $\beta+\upsilon=1$, see Eq. 19 and paragraph 2.6. The names of the relevant columns follow exactly the same notation as the ones described above:
       1. Instability boundary: (`logP0_critL2_DEF`, `m1iso_critL2_DEF`)
