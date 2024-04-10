@@ -1,2 +1,41 @@
 # Forming_merging_double_COs
-From the paper Forming merging double compact objects with stable mass transfer (A. Picco et al. (2023))
+From the paper Forming merging double compact objects with stable mass transfer (A. Picco et al. (2024)). I am still adjusting this, for any questions text me at annachiara.picco@kuleuven.be. 
+By now I am providing the following:
+
+1. HE-MS folder: this is the working directory with which I produced the Helium Zero Age Main Sequence (He-ZAMS) models, with initial masses 0.275 Msun ≤ m_d,f ≤ 52.75 Msun, where m_d,f is the donor star's mass at the end of the stable MT episode. I explain this in the last paragraph of Sec. 2.5 of the paper. The working directory works with MESA v15140.
+   
+2. BOUNDARIES folder: this contains my semi-analytical calculations for the instability boundary (Sec. 2.3) and merging time boundary (Sec. 2.1), based on the mass-radius exponents grid provided by Ge et al. (2020) for donor star's initial masses 2 Msun < m_d,i < 100 Msun. The subfolders are named by the donor star's initial mass value, and inside the subfolders you will find txt files called in this fashion: "Info_{M}Msun_upsi{upsilon}.txt", where M is the donor star's mass, and upsilon is the efficiency of L2 outflow as defined in Sec. 2.6. The upsilon value in the name of the files just mean that some (not all!) information inside the file are related to the relevant upsilon. The file has many columns, some of them are just for visualization purposes. The important ones are:
+   - INSTABILITY BOUNDARY, beta=1
+     This is the "red solid" line you see in Fig. 5 of the paper, for example. It represents the instability (or common envelope, CE) boundary derived in the fully isotropic re-emission (beta=1, if you look into Eq.4 or Eq. 19) limit. For this boundary, you have:
+      1. logP0_crit: initial period, in log of P0 (days), at which the unstable MT episode is initiated.
+      2. m1iso_crit: mass of the accretor at which the unstable MT episode is initiated. This is the same at the start of the MT and at the end, since beta=1 implies no accretion
+      3. phases_crit: index, along the arrays of logP0_crit and m1iso_crit, at which TAMS, core He ignition and core He depletion are found. These are directly derived from Get et al. (2020) simulations, as they provide the central abundances in their grid.          4. m2iso_crit: mass of the donor star at the end of the MT episode; calculated with a stripping factor derived from Ge et al. (2020) in the way described in Sec. 2.4, more specifically Eq. 17.
+   
+   - TIME DELAY BOUNDARY, beta=1
+     This is the "indigo solid" line you see in Fig. 5 of the paper, for example. It represents the boundary for systems that have post-MT properties leading to a GW merger, i.e. with time delay < 13.8 Gyr. The shrinkage of the orbit is calculated in the isotropic re-emission (beta=1) limit, Eq. 8. For this boundary, you have:
+      1. logP0_hub: initial period, in log of P0 (days), to which the maximum accretor mass m1iso_hub for GW mergers after the MT episode is corresponding.
+      2. m1iso_hub: maximum initial (and final) mass of the accretor at which you find GW mergers after the MT episode.
+      3. phases_hub: index, along the arrays of logP0_hub and m1iso_hub, at which TAMS, core He ignition and core He depletion are found. These are calculated by comparing the phases_crit with equi-Roche-Lobe loci in the logP0-m_a,i diagram.
+   
+   - ROCHE LOBE BOUNDARY beta=1
+     This is the "solid gray" line you see in Fig. 5 of the paper, for example. It represents the boundary that we imposed to have sensible orbital separations, at the end of the MT episode, such that the post-MT donor star would still fit into its own Roche Lobe, see Sec. 2.5. For this boundary, you have:
+      1. logP0_RHeRL: initial period, in log of P0 (days), to which the maximum accretor mass m1iso_RHeRL for the orbit to fit a Zero Age Main Sequence Helium star after the MT episode is corresponding.
+      2. m1iso_RHeRL: maximum initial (and final) mass of the accretor at which you find post MT properties suitable to fit a  Zero Age Main Sequence Helium star within its own Roche Lobe.
+      3. m2iso_RHeRL: mass of the donor star at the end of the MT episode, corresponding to the logP0_RHeRL and m1iso_RHeRL initial properties. These are found by interpolating within the provided stripping factor from Ge et al. (2020), the corresponding equi-Roche-Lobe loci and the radii of the Zero Age Helium Main Sequence stars models.
+   
+   - HR DIAGRAM OF MODELS
+     Just for completeness, you find the columns of logL_Lsun and logTeff at which the models in the Ge et al. (2020) grid are starting their adiabatic mass loss episode.
+
+   - THE UPSILON>0 BOUNDARIES
+     These are the instability ("dashed red" line of Fig. 5), time delay ("dashed blue" line in Fig. 5) and Roche Lobe ("dashed gray" line in Fig. 5) boundaries in the case in which the MT has some L2 outflow efficiency upsilon equal to the value printed in the name of the file. The MT episode is still assumed to be completely non-conservative, by setting beta+upsilon=1, see Eq. 19 and paragraph 2.6. The names of the relevant columns follow exactly the same notation as the ones described above:
+      1. Instability boundary: (logP0_critL2_DEF,m1iso_critL2_DEF)
+      2. Time delay boundary: (logP0_hubL2_DEF,m1iso_hubL2_DEF)
+      3. Roche Lobe boundary: (logP0_RHeRLL2_DEF,m1iso_RHeRLL2_DEF)
+     NB: You might notice that there are some columns that are called like the ones listed here above, but without the "_DEF" in the end. These are not used in the paper and are concerning a different fitting function to the L2 position, rather than the "definitive" (hence, DEF) one, in Eq. 20. Just stick to these.
+
+    - NEUTRON STAR PROGENITORS: 8 Msun < m_d,i < 20 Msun
+     For this objects, I am still providing all the information above, which hold in the case of direct collapse fate after the MT episode. To account for the possible occurrence of supernova kicks, I also computed distributions of post supernova properties as explained in Sec. 3.2. I have grids (to be uploaded soon) for these, that can produce the data for the colormap of a plot like the one in Fig. 8. For the sake of illustrations, I am providing in the "Info_{M}Msun_upsi{upsilon}.txt" file the following additional three columns:
+      1. logP0_PmergeMIN
+      2. m1iso_PmergeMIN
+      3. m2iso_PmergeMIN
+     These are following the same notation as seen above, and they are mapping an iso-contour of probability Pmerge of merging within 13.8 Gyr such that Pmerge=0.1 (the "dashed black line" in Fig. 8, for example). This is derived in the fully isotropic re-emission limit, beta=1.
