@@ -1,5 +1,5 @@
 # Forming_merging_double_COs
-From the paper Forming merging double compact objects with stable mass transfer (A. Picco et al. (2024)). I am still adjusting this, for any questions text me at annachiara.picco@kuleuven.be. 
+From the paper Forming merging double compact objects with stable mass transfer (A. Picco et al. (2024)) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10955659.svg)](https://doi.org/10.5281/zenodo.10955659). I am still adjusting this, for any questions text me at annachiara.picco@kuleuven.be. 
 By now I am providing the following:
 
 1. **HE-MS folder**
